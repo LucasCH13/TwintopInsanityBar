@@ -73,7 +73,15 @@ local function LoadDefaultSettings()
 					yPos=-12,
 					width=24,
 					height=24
-				}
+				},
+				gcd = {
+					lineWidth = 30,
+					lineHeight = 30,
+					lineColor = "FFFFFB00",
+					xPosition = 0,
+					yPosition = 10,
+					enabled = false,
+				},
 			},
 			displayBar = {
 				alwaysShow=false,
@@ -90,7 +98,7 @@ local function LoadDefaultSettings()
 				pinToPersonalResourceDisplay=false,
 				showPassive=true,
 				showCasting=true,
-				smooth=false
+				smooth=false,
 			},
 			comboPoints = {
 				width=25,
@@ -522,6 +530,20 @@ local function ConstructAddonOptionsPanel()
 	f:SetScript("OnClick", function(self, ...)
 		TRB.Data.settings.core.bar.smooth = self:GetChecked()
 		TRB.Functions.Bar:UpdateSmoothBar()
+	end)
+
+	yCoord = yCoord - 30
+	controls.checkBoxes.experimentalShamanEnhancement = CreateFrame("CheckButton", "TwintopResourceBar_CB_GCD_Treshohld", parent, "ChatConfigCheckButtonTemplate")
+	f = controls.checkBoxes.experimentalShamanEnhancement
+	f:SetPoint("TOPLEFT", oUi.xCoord, yCoord)
+	---@diagnostic disable-next-line: undefined-field
+	getglobal(f:GetName() .. 'Text'):SetText("GCD Threshold Line")
+	---@diagnostic disable-next-line: inject-field
+	f.tooltip = "When checked, draws a Threshold line that represents the GCD moving along the bar"
+	f:SetChecked(TRB.Data.settings.core.thresholds.gcd.enabled)
+	f:SetScript("OnClick", function(self, ...)
+		TRB.Data.settings.core.thresholds.gcd.enabled = self:GetChecked()
+		TRB.Functions.Threshold:SetThresholdGCDSizeAndPosition()
 	end)
 
 	yCoord = yCoord - 30

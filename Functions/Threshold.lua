@@ -26,6 +26,11 @@ local function SetThresholdIconSizeAndPosition(settings, thresholdLine)
 		thresholdLine.icon:SetSize(settings.thresholds.icons.width, settings.thresholds.icons.height)
 	end
 end
+function TRB.Functions.Threshold:SetThresholdGCDSizeAndPosition()
+	if TRB.Data.settings.core.thresholds.gcd.enabled then
+		print("checked")
+	end
+end
 
 function TRB.Functions.Threshold:RepositionThreshold(settings, thresholdLine, parentFrame, resourceThreshold, resourceMax)
 	if settings == nil or settings.bar == nil or thresholdLine == nil then
