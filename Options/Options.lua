@@ -77,6 +77,8 @@ local function LoadDefaultSettings()
 				gcd = {
 					lineWidth = 30,
 					lineHeight = 30,
+					relativeTo = "TOP",
+					relativeToName = L["PositionAbove"],
 					lineColor = "FFFFFB00",
 					xPosition = 0,
 					yPosition = 10,
@@ -533,7 +535,7 @@ local function ConstructAddonOptionsPanel()
 	end)
 
 	yCoord = yCoord - 30
-	controls.checkBoxes.experimentalShamanEnhancement = CreateFrame("CheckButton", "TwintopResourceBar_CB_GCD_Treshohld", parent, "ChatConfigCheckButtonTemplate")
+	controls.checkBoxes.experimentalShamanEnhancement = CreateFrame("CheckButton", "TwintopResourceBar_CB_GCD_Treshold", parent, "ChatConfigCheckButtonTemplate")
 	f = controls.checkBoxes.experimentalShamanEnhancement
 	f:SetPoint("TOPLEFT", oUi.xCoord, yCoord)
 	---@diagnostic disable-next-line: undefined-field
@@ -543,7 +545,8 @@ local function ConstructAddonOptionsPanel()
 	f:SetChecked(TRB.Data.settings.core.thresholds.gcd.enabled)
 	f:SetScript("OnClick", function(self, ...)
 		TRB.Data.settings.core.thresholds.gcd.enabled = self:GetChecked()
-		TRB.Functions.Threshold:SetThresholdGCDSizeAndPosition()
+		-- print("Checked")
+		TRB.Functions.Bar:UpdateGCD()
 	end)
 
 	yCoord = yCoord - 30

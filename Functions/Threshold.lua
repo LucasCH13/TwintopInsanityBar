@@ -26,12 +26,39 @@ local function SetThresholdIconSizeAndPosition(settings, thresholdLine)
 		thresholdLine.icon:SetSize(settings.thresholds.icons.width, settings.thresholds.icons.height)
 	end
 end
-function TRB.Functions.Threshold:SetThresholdGCDSizeAndPosition()
-	if TRB.Data.settings.core.thresholds.gcd.enabled then
-		print("checked")
+local function SetThresholdGCDSizeAndPosition(settings, thresholdLine)
+	if thresholdLine.gcd then
+		local setPoint = "TOP"
+		local setPointRelativeTo = "BOTTOM"
+		
+		if settings.thresholds.gcd.relativeTo == "TOP" then
+			setPoint = "BOTTOM"
+			setPointRelativeTo = "TOP"
+		elseif settings.thresholds.gcd.relativeTo == "CENTER" then
+			setPoint = "CENTER"
+			setPointRelativeTo = "CENTER"
+		elseif settings.thresholds.gcd.relativeTo == "BOTTOM" then
+			setPoint = "TOP"
+			setPointRelativeTo = "BOTTOM"
+		thresholdLine.gcd:ClearAllPoints()
+		thresholdLine.gcd:SetPoint(setPoint, thresholdLine, setPointRelativeTo, settings.thresholds.gcd.xPosition, settings.thresholds.gcd.yPosition, settings.thresholds.gcd.lineColor)
+		thresholdLine.gcd:SetSize(settings.thresholds.gcd.lineWidth, settings.thresholds.gcd.lineHeight)
+		end
 	end
 end
+function TRB.Functions.Threshold:SetThresholdGCD(threshold, settings)
+	if threshold.gcd == nil then
+		return
+	end
 
+	threshold.gcd.texture:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
+	
+	if settings.thresholds.gcd.enabled then
+		threshold.gcd:Show()
+	else
+		threshold.gcd:Hide()
+	end
+end
 function TRB.Functions.Threshold:RepositionThreshold(settings, thresholdLine, parentFrame, resourceThreshold, resourceMax)
 	if settings == nil or settings.bar == nil or thresholdLine == nil then
 		print(L["RepositionThresholdInvalid"])
@@ -51,6 +78,7 @@ function TRB.Functions.Threshold:RepositionThreshold(settings, thresholdLine, pa
 	thresholdLine:SetPoint("LEFT", parentFrame,	"LEFT",	(resourceThreshold * factor), 0)
 
 	SetThresholdIconSizeAndPosition(settings, thresholdLine)
+	SetThresholdGCDSizeAndPosition(settings, thresholdLine)
 end
 
 function TRB.Functions.Threshold:SetThresholdIcon(threshold, settingKey, settings)

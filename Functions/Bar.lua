@@ -385,7 +385,13 @@ function TRB.Functions.Bar:UpdateSmoothBar()
 		end
 	end
 end
-
+function TRB.Functions.Bar:UpdateGCD(threshold, setting)
+	if TRB.Data.settings.core.thresholds.gcd.enabled then
+		print("zgueg")
+		TRB.Functions.Threshold:SetThresholdGCD(threshold, setting)
+	end
+	
+end
 function TRB.Functions.Bar:Construct(settings)
 	if settings ~= nil and settings.bar ~= nil then
 		local barContainerFrame = TRB.Frames.barContainerFrame
