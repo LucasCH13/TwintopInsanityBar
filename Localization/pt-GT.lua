@@ -139,7 +139,7 @@ if locale == "ptBR" or locale == "ptPT" then
     L["PotionCooldownConfigurationHeader"] = "Poção na configuração do tempo de espera"
     L["PotionThresholdShow"] = "Mostrar linhas de limite de poção quando a poção estiver em espera"
     L["PotionThresholdShowTooltip"] = "Mostra as linhas de limite da poção enquanto o uso da poção ainda está em espera. Configure abaixo com que antecedência as linhas ficarão visíveis, entre 0 - 300 segundos (300 sendo efetivamente 'sempre visíveis')."
-    L["PotionThresholdShowGCDs"] = "CDs restantes no tempo de espera da Poção"
+    L["PotionThresholdShowGCDs"] = "GCDs restantes no tempo de espera da Poção"
     L["PotionThresholdShowGCDsSlider"] = "GCDs de resfriamento de poções - piso de 0,75 segundos"
     L["PotionThresholdShowTime"] = "Tempo restante para o tempo de espera da Poção"
     L["PotionThresholdShowTimeSlider"] = "Tempo restante de espera da poção"
@@ -1897,4 +1897,6 @@ if locale == "ptBR" or locale == "ptPT" then
     L["PaladinHolyAudioCheckboxInfusionOfLightStack2Tooltip"] = "Reproduza o áudio quando obtiver um segundo (e máximo) processo de Infusão de Luz. Se ambos estiverem marcados, apenas este som será reproduzido."
     L["PaladinHolyBarTextVariable_iolTime"] = "Tempo restante no seu bônus de Infusão de Luz"
     L["PaladinHolyBarTextVariable_iolStacks"] = "Contagem atual de stacks do seu bônus de Infusão de Luz"
+    L["ShowBarDragonriding"] = "Mostrar enquanto estiver em uma montaria Dragonriding?"
+    L["ShowBarDragonridingTooltip"] = "Se desmarcada, a Barra de Recursos ficará oculta quando você estiver em uma montaria Dragonriding, independentemente das configurações acima."
 end

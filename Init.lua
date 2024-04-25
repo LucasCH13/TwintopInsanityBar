@@ -38,6 +38,8 @@ addonData.libs.ScrollingTable = LibStub:GetLibrary("ScrollingTable")
 
 addonData.libs.LibSmoothStatusBar = LibStub:GetLibrary("LibSmoothStatusBar-1.0")
 
+addonData.libs.LibAdvFlight = LibStub:GetLibrary("LibAdvFlight-1.0")
+
 TRB.Details.addonData = addonData
 
 -- Some class functions get referenced by other methods. These live in a consistent location but are actually created in the class modules.
@@ -144,7 +146,6 @@ TRB.Data.character = {
 	guid = UnitGUID("player"),
 	className = "",
 	specName = "",
-	specGroup = GetActiveSpecGroup(),
 	maxResource = 100,
 	talents = TRB.Classes.Talents:New() --[[@as TRB.Classes.Talents]],
 	items = {}

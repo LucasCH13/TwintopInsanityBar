@@ -139,7 +139,7 @@ if locale == "deDE" then
     L["PotionCooldownConfigurationHeader"] = "Trank zur Abklingkonfiguration"
     L["PotionThresholdShow"] = "Trankschwellenlinien werden angezeigt, wenn sich der Trank in der Abklingzeit befindet"
     L["PotionThresholdShowTooltip"] = "Zeigt die Trankschwellenlinien an, während die Abklingzeit der Trankverwendung noch läuft. Konfigurieren Sie unten, wie lange im Voraus die Linien sichtbar sein sollen, zwischen 0 und 300 Sekunden (wobei 300 praktisch „immer sichtbar“ ist)."
-    L["PotionThresholdShowGCDs"] = "CDs verbleiben in der Abklingzeit von Trank"
+    L["PotionThresholdShowGCDs"] = "GCDs verbleiben in der Abklingzeit von Trank"
     L["PotionThresholdShowGCDsSlider"] = "Trank-Abklingzeit GCDs – 0,75 Sek. Boden"
     L["PotionThresholdShowTime"] = "Verbleibende Zeit für die Abklingzeit des Tranks"
     L["PotionThresholdShowTimeSlider"] = "Verbleibende Abklingzeit des Tranks"
@@ -1897,4 +1897,6 @@ if locale == "deDE" then
     L["PaladinHolyAudioCheckboxInfusionOfLightStack2Tooltip"] = "Spielen Sie einen Audiohinweis ab, wenn Sie einen zweiten (und maximalen) Infusion of Light-Proc erhalten. Wenn beides aktiviert ist, wird nur dieser Ton abgespielt."
     L["PaladinHolyBarTextVariable_iolTime"] = "Verbleibende Zeit für den Buff „Infusion des Lichts“."
     L["PaladinHolyBarTextVariable_iolStacks"] = "Aktuelle Stapelzahl Ihres Buffs „Infusion des Lichts“."
+    L["ShowBarDragonriding"] = "Auf einem Drachenreiten-Reittier zeigen?"
+    L["ShowBarDragonridingTooltip"] = "Wenn diese Option deaktiviert ist, wird die Ressourcenleiste unabhängig von den oben genannten Einstellungen ausgeblendet, wenn Sie sich auf einem Drachenreiten-Reittier befinden."
 end

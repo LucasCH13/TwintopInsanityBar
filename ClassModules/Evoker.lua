@@ -59,8 +59,6 @@ if classIndexId == 13 then --Only do this if we're on an Evoker!
 
 		specCache.devastation.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 10000,
 			maxResource2 = 5,
@@ -107,8 +105,6 @@ if classIndexId == 13 then --Only do this if we're on an Evoker!
 
 		specCache.preservation.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			maxResource = 100,			
 			effects = {
 			},
@@ -362,8 +358,6 @@ if classIndexId == 13 then --Only do this if we're on an Evoker!
 
 		specCache.augmentation.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 10000,
 			maxResource2 = 5,
@@ -2053,7 +2047,9 @@ if classIndexId == 13 then --Only do this if we're on an Evoker!
 		local specId = GetSpecialization()
 
 		if specId == 1 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.evoker.devastation.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.evoker.devastation.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.evoker.devastation.displayBar.notZeroShow) or
@@ -2071,7 +2067,9 @@ if classIndexId == 13 then --Only do this if we're on an Evoker!
 				end
 			end
 		elseif specId == 2 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.evoker.preservation.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.evoker.preservation.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.evoker.preservation.displayBar.notZeroShow) or
@@ -2089,7 +2087,9 @@ if classIndexId == 13 then --Only do this if we're on an Evoker!
 				end
 			end
 		elseif specId == 3 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.evoker.augmentation.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.evoker.augmentation.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.evoker.augmentation.displayBar.notZeroShow) or

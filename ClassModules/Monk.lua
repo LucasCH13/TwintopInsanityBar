@@ -56,8 +56,6 @@ if classIndexId == 10 then --Only do this if we're on a Monk!
 
 		specCache.mistweaver.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			maxResource = 100,
 			effects = {
 			},
@@ -327,8 +325,6 @@ if classIndexId == 10 then --Only do this if we're on a Monk!
 
 		specCache.windwalker.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 100,
 			maxResource2 = 5,
@@ -2376,7 +2372,9 @@ elseif spell.isTalent and not talents:IsTalentActive(spell) then -- Talent not s
 		local snapshotData = TRB.Data.snapshotData or TRB.Classes.SnapshotData:New()
 
 		if specId == 2 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.monk.mistweaver.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.monk.mistweaver.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.monk.mistweaver.displayBar.notZeroShow) or
@@ -2394,7 +2392,9 @@ elseif spell.isTalent and not talents:IsTalentActive(spell) then -- Talent not s
 				end
 			end
 		elseif specId == 3 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.monk.windwalker.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.monk.windwalker.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.monk.windwalker.displayBar.notZeroShow) or

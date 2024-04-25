@@ -139,7 +139,7 @@ if locale == "zhTW" then
     L["PotionCooldownConfigurationHeader"] = "冷卻配置藥水"
     L["PotionThresholdShow"] = "當藥水處於冷卻狀態時顯示藥水閾值線"
     L["PotionThresholdShowTooltip"] = "當藥水使用仍處於冷卻狀態時顯示藥水閾值線。 在下方配置線條可見的提前時間，範圍為 0 - 300 秒（300 秒實際上「始終可見」）。"
-    L["PotionThresholdShowGCDs"] = "藥水冷卻剩餘 CD"
+    L["PotionThresholdShowGCDs"] = "藥水冷卻剩餘 GCD"
     L["PotionThresholdShowGCDsSlider"] = "藥水冷卻 GCD - 0.75 秒下限"
     L["PotionThresholdShowTime"] = "藥水冷卻剩餘時間"
     L["PotionThresholdShowTimeSlider"] = "藥水剩餘冷卻時間"
@@ -1897,4 +1897,6 @@ if locale == "zhTW" then
     L["PaladinHolyAudioCheckboxInfusionOfLightStack2Tooltip"] = "當您獲得第二個（也是最大）光之注入過程時播放音訊提示。 如果兩者都選中，則只會播放此聲音。"
     L["PaladinHolyBarTextVariable_iolTime"] = "光之注入增益的剩餘時間"
     L["PaladinHolyBarTextVariable_iolStacks"] = "您的光之注入增益的當前堆疊計數"
+    L["ShowBarDragonriding"] = "在騎龍坐騎時表演？"
+    L["ShowBarDragonridingTooltip"] = "如果未選中，則無論上述設定如何，在騎龍坐騎時資源欄都會隱藏。"
 end

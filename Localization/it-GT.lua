@@ -139,7 +139,7 @@ if locale == "itIT" then
     L["PotionCooldownConfigurationHeader"] = "Pozione sulla configurazione del tempo di recupero"
     L["PotionThresholdShow"] = "Mostra le linee della soglia della pozione quando la pozione è in ricarica"
     L["PotionThresholdShowTooltip"] = "Mostra le linee della soglia della pozione mentre l'uso della pozione è ancora in ricarica. Configura di seguito con quanto anticipo le linee saranno visibili, tra 0 e 300 secondi (300 sono effettivamente 'sempre visibili')."
-    L["PotionThresholdShowGCDs"] = "CD rimasti nel tempo di recupero di Pozioni"
+    L["PotionThresholdShowGCDs"] = "GCD rimasti nel tempo di recupero di Pozioni"
     L["PotionThresholdShowGCDsSlider"] = "GCD di recupero della pozione: pavimento di 0,75 secondi"
     L["PotionThresholdShowTime"] = "Tempo rimasto al tempo di recupero della Pozione"
     L["PotionThresholdShowTimeSlider"] = "Tempo rimanente di recupero della pozione"
@@ -1897,4 +1897,6 @@ if locale == "itIT" then
     L["PaladinHolyAudioCheckboxInfusionOfLightStack2Tooltip"] = "Riproduci il segnale audio quando ottieni una seconda (e massima) attivazione di Infusione di Luce. Se sono selezionati entrambi, verrà riprodotto solo questo suono."
     L["PaladinHolyBarTextVariable_iolTime"] = "Tempo rimanente sul tuo buff Infusione di luce"
     L["PaladinHolyBarTextVariable_iolStacks"] = "Conteggio attuale dello stack sul tuo buff Infusione di luce"
+    L["ShowBarDragonriding"] = "Mostrare mentre sei su una cavalcatura Dragonriding?"
+    L["ShowBarDragonridingTooltip"] = "Se deselezionata, la barra delle risorse sarà nascosta quando si è su una cavalcatura Dragonriding indipendentemente dalle impostazioni di cui sopra."
 end

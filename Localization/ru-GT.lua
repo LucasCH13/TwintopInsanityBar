@@ -139,7 +139,7 @@ if locale == "ruRU" then
     L["PotionCooldownConfigurationHeader"] = "Зелье в конфигурации перезарядки"
     L["PotionThresholdShow"] = "Показывать линии порога зелья, когда зелье находится на перезарядке"
     L["PotionThresholdShowTooltip"] = "Показывает линии порога действия зелья, пока его использование все еще находится на стадии восстановления. Ниже настройте, как далеко заранее должны быть видны линии: от 0 до 300 секунд (300 фактически означает всегда видимые)."
-    L["PotionThresholdShowGCDs"] = "Компакт-диски остались на перезарядке Зелья."
+    L["PotionThresholdShowGCDs"] = "ГКД остались на перезарядке Зелья"
     L["PotionThresholdShowGCDsSlider"] = "ГКД зелий — 0,75 сек."
     L["PotionThresholdShowTime"] = "Оставшееся время восстановления зелья"
     L["PotionThresholdShowTimeSlider"] = "Оставшееся время восстановления зелья"
@@ -1897,4 +1897,6 @@ if locale == "ruRU" then
     L["PaladinHolyAudioCheckboxInfusionOfLightStack2Tooltip"] = "Включите звуковой сигнал, когда получите второй (и максимальный) эффект Infusion of Light. Если отмечены оба, будет воспроизводиться только этот звук."
     L["PaladinHolyBarTextVariable_iolTime"] = "Оставшееся время действия баффа «Настой света»"
     L["PaladinHolyBarTextVariable_iolStacks"] = "Текущее количество стаков вашего баффа «Настой света»"
+    L["ShowBarDragonriding"] = "Показать, находясь на ездовом драконе?"
+    L["ShowBarDragonridingTooltip"] = "Если этот флажок снят, панель ресурсов будет скрыта при использовании верхового дракона независимо от вышеуказанных настроек."
 end

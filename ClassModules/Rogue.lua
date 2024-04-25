@@ -43,7 +43,6 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 
 		specCache.assassination.character = {
 			guid = UnitGUID("player"),
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 100,
 			maxResource2 = 5,
@@ -645,8 +644,6 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 
 		specCache.outlaw.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 100,
 			maxResource2 = 5,
@@ -1309,7 +1306,6 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 
 		specCache.subtlety.character = {
 			guid = UnitGUID("player"),
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 100,
 			maxResource2 = 5,
@@ -2430,11 +2426,11 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 		local targetData = TRB.Data.snapshotData.targetData --[[@as TRB.Classes.TargetData]]
 		
 		if specId == 1 then -- Assassination
-			targetData:UpdateDebuffs(currentTime)
+			targetData:UpdateTrackedSpells(currentTime)
 		elseif specId == 2 then -- Outlaw
-			targetData:UpdateDebuffs(currentTime)
+			targetData:UpdateTrackedSpells(currentTime)
 		elseif specId == 3 then -- Outlaw
-			targetData:UpdateDebuffs(currentTime)
+			targetData:UpdateTrackedSpells(currentTime)
 		end
 	end
 
@@ -3936,7 +3932,7 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 							end
 
 							local resourceAmount = CalculateAbilityResourceValue(spell.resource + viciousVenomsOffset, spell.nimbleFingers, spell.rushedSetup, spell.comboPoints)
-							TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, specSettings.thresholds.width, -resourceAmount, TRB.Data.character.maxResource)
+							TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, -resourceAmount, TRB.Data.character.maxResource)
 
 							local showThreshold = true
 							local thresholdColor = specSettings.colors.threshold.over
@@ -4193,9 +4189,9 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 					local pairOffset = 0
 					for k, v in pairs(spells) do
 						local spell = spells[k]
-						if spell ~= nil and spell.id ~= nil and spell.resource ~= nil and spell.resource < 0 and spell.thresholdId ~= nil and spell.settingKey ~= nil then	
+						if spell ~= nil and spell.id ~= nil and spell.resource ~= nil and spell.resource < 0 and spell.thresholdId ~= nil and spell.settingKey ~= nil then
 							local resourceAmount = CalculateAbilityResourceValue(spell.resource, spell.nimbleFingers, spell.rushedSetup, spell.comboPoints)
-							TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, specSettings.thresholds.width, -resourceAmount, TRB.Data.character.maxResource)
+							TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, -resourceAmount, TRB.Data.character.maxResource)
 
 							local showThreshold = true
 							local thresholdColor = specSettings.colors.threshold.over
@@ -4247,7 +4243,7 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 									elseif spell.id == spells.pistolShot.id then
 										if snapshots[spells.opportunity.id].buff.isActive then
 											resourceAmount = resourceAmount * spells.opportunity.resourceModifier
-											TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, specSettings.thresholds.width, -resourceAmount, TRB.Data.character.maxResource)
+											TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, -resourceAmount, TRB.Data.character.maxResource)
 										end
 
 										if currentResource >= -resourceAmount then
@@ -4471,7 +4467,7 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 						local spell = spells[k]
 						if spell ~= nil and spell.id ~= nil and spell.resource ~= nil and spell.resource < 0 and spell.thresholdId ~= nil and spell.settingKey ~= nil then							
 							local resourceAmount = CalculateAbilityResourceValue(spell.resource, spell.nimbleFingers, spell.rushedSetup, spell.comboPoints)
-							TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, specSettings.thresholds.width, -resourceAmount, TRB.Data.character.maxResource)
+							TRB.Functions.Threshold:RepositionThreshold(specSettings, resourceFrame.thresholds[spell.thresholdId], resourceFrame, -resourceAmount, TRB.Data.character.maxResource)
 
 							local showThreshold = true
 							local thresholdColor = specSettings.colors.threshold.over
@@ -5282,7 +5278,9 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 		local snapshotData = TRB.Data.snapshotData or TRB.Classes.SnapshotData:New()
 
 		if specId == 1 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.rogue.assassination.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.rogue.assassination.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.rogue.assassination.displayBar.notZeroShow) or
@@ -5300,7 +5298,9 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 				end
 			end
 		elseif specId == 2 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.rogue.outlaw.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.rogue.outlaw.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.rogue.outlaw.displayBar.notZeroShow) or
@@ -5318,7 +5318,9 @@ if classIndexId == 4 then --Only do this if we're on a Rogue!
 				end
 			end
 		elseif specId == 3 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.rogue.subtlety.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.rogue.subtlety.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.rogue.subtlety.displayBar.notZeroShow) or

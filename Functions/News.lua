@@ -11,10 +11,38 @@ local content = [====[
 
 ---
 
-# 10.2.6.8-beta01 (2024-04-16)
+# 10.2.6.10-release (2024-04-23)
+## General
+
+- [#383 - NEW (Twintop)](#383) Add a new option to hide the Resource Bar while on a Dragonriding mount. This is located under the "Bar Display" section of the "Bar Display" tab on a per-specialization basis.
+
+## Druid
+### Balance
+
+- (UPDATE (Twintop)) Update interaction and implementation of Touch the Cosmos (S4 4P buff) to be more reliable.
+
+---
+
+# 10.2.6.9-release (2024-04-20)
+## Localization
+
+- [#8 - UPDATE (Koroshy)](#8) Add more French (frFR) localizations.
+
 ## Priest
 
-- Attempt to fix Shadowfiend/Mindbender issues.
+- [#336 - FIX (Twintop)](#336) Respect disabling of mana/Insanity gain tracking for Shadowfiend and Mindbender in a few places the setting was being overlooked.
+
+### Shadow
+
+- [#336 - FIX (Twintop)](#336) Correct Mindbender predictive incoming Insanity when Devoured Despair proc is active.
+
+---
+
+# 10.2.6.8-release (2024-04-18)
+## Rogue
+
+- (FIX (Twintop)) Fix LUA errors from a bad API call.
+- (FIX (Twintop)) Fix threshold position being incorrect.
 
 ---
 

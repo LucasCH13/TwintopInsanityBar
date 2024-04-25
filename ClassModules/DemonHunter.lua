@@ -48,8 +48,6 @@ if classIndexId == 12 then --Only do this if we're on a DemonHunter!
 
 		specCache.havoc.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 120,
 			effects = {
@@ -395,8 +393,6 @@ if classIndexId == 12 then --Only do this if we're on a DemonHunter!
 
 		specCache.vengeance.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 2,
 			maxResource = 120,
 			effects = {
@@ -1953,7 +1949,9 @@ if classIndexId == 12 then --Only do this if we're on a DemonHunter!
 		local snapshotData = TRB.Data.snapshotData or TRB.Classes.SnapshotData:New()
 
 		if specId == 1 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.demonhunter.havoc.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.demonhunter.havoc.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.demonhunter.havoc.displayBar.notZeroShow) or
@@ -1971,7 +1969,9 @@ if classIndexId == 12 then --Only do this if we're on a DemonHunter!
 				end
 			end
 		elseif specId == 2 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.demonhunter.vengeance.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.demonhunter.vengeance.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.demonhunter.vengeance.displayBar.notZeroShow) or

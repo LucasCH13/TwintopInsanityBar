@@ -40,8 +40,6 @@ if classIndexId == 1 then --Only do this if we're on a Warrior!
 
 		specCache.arms.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 100,
 			effects = {
@@ -323,8 +321,6 @@ if classIndexId == 1 then --Only do this if we're on a Warrior!
 
 		specCache.fury.character = {
 			guid = UnitGUID("player"),
----@diagnostic disable-next-line: missing-parameter
-			specGroup = GetActiveSpecGroup(),
 			specId = 1,
 			maxResource = 100,
 			effects = {
@@ -1946,7 +1942,9 @@ if classIndexId == 1 then --Only do this if we're on a Warrior!
 		local snapshotData = TRB.Data.snapshotData or TRB.Classes.SnapshotData:New()
 
 		if specId == 1 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.warrior.arms.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.warrior.arms.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.warrior.arms.displayBar.notZeroShow) or
@@ -1964,7 +1962,9 @@ if classIndexId == 1 then --Only do this if we're on a Warrior!
 				end
 			end
 		elseif specId == 2 then
-			if not TRB.Data.specSupported or force or ((not affectingCombat) and
+			if not TRB.Data.specSupported or force or
+			(TRB.Data.character.advancedFlight and not TRB.Data.settings.warrior.fury.displayBar.dragonriding) or 
+			((not affectingCombat) and
 				(not UnitInVehicle("player")) and (
 					(not TRB.Data.settings.warrior.fury.displayBar.alwaysShow) and (
 						(not TRB.Data.settings.warrior.fury.displayBar.notZeroShow) or
